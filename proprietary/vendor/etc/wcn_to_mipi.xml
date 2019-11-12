@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<refnotify_config>
+	<product val="sp9853i_1h10"/>
+	<!--band_cnt means the total channel number which will trig the hopping-->
+	<band_cnt val="14"/>
+	<channel>
+		<!--channel 0 menas the default DSI CLK is 489.9MHz,
+		if the wlan is on and connect no AP,it will report 0-->
+		<channel00 wcn="00" mipi="4899"/>
+		<channel01 wcn="01" mipi="4848"/>
+		<channel02 wcn="02" mipi="4899"/>
+		<channel03 wcn="03" mipi="4899"/>
+		<channel04 wcn="04" mipi="4899"/>
+		<channel05 wcn="05" mipi="4899"/>
+		<channel06 wcn="06" mipi="4899"/>
+		<channel07 wcn="07" mipi="4848"/>
+		<channel08 wcn="08" mipi="4848"/>
+		<channel09 wcn="09" mipi="4848"/>
+		<channel10 wcn="10" mipi="4899"/>
+		<channel11 wcn="11" mipi="4899"/>
+		<channel12 wcn="12" mipi="4899"/>
+		<channel13 wcn="13" mipi="4899"/>
+	</channel>
+</refnotify_config>

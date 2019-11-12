@@ -1,0 +1,55 @@
+on post-fs
+    insmod /lib/modules/wdtee_armtz.ko
+    chmod 660 /dev/wdteearmtz00
+    chmod 660 /dev/wdtee_log00
+    chown system:system /dev/wdtee_logl00
+    chown system:system /dev/wdteearmtz00
+    mkdir /cache/tee 0700 system system
+    mkdir /cache/tee/data 0700 system system
+
+on post-fs-data
+    chmod 660 /dev/wdteearmtz00
+    chmod 660 /dev/wdtee_log00
+    chown system:system /dev/wdtee_logl00
+    chown system:system /dev/wdteearmtz00
+
+on post-fs
+    start wdtee_listener
+    start wdtee_deamon
+    start wdtee_log
+
+on charger
+    start wdtee_listener
+    start wdtee_deamon
+    start wdtee_log
+
+on property:ro.bootmode=cali
+    start wdtee_lstn-cali
+    start wdtee_dmn-cali
+
+service wdtee_lstn-cali /vendor/bin/wdtee_listener
+    class cali
+    user  system
+    group system
+    capabilities SYS_RAWIO
+
+service wdtee_dmn-cali /vendor/bin/wdtee_deamon
+    class cali
+    user root
+
+service wdtee_listener /vendor/bin/wdtee_listener
+    class core
+    user system
+    group system
+    capabilities SYS_RAWIO
+
+service wdtee_deamon /vendor/bin/wdtee_deamon
+    class core
+    user root
+
+service wdtee_log /vendor/bin/wdtee_log
+    class core
+    user system
+    group sdcard_rw
+
+
